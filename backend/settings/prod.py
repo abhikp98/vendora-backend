@@ -5,11 +5,11 @@ import dj_database_url
 
 DEBUG = False
 
-ALLOWED_HOSTS = config(
+ALLOWED_HOSTS = [
     'vendora-backend-4g8o.onrender.com',
     'localhost',
     '127.0.0.1',
-)
+]
 
 DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
