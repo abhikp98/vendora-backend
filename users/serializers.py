@@ -19,14 +19,15 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("can't register as ADMIN")
 
         return attrs
-    
+
     def create(self, validated_data):
         validated_data.pop('confirm_password')
         user = User.objects.create_user(**validated_data)
         return user
-    
+
 
 class UserSerialiser(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'role', 'phone', 'profile_picture']
+        fields = ['id', 'username', 'email', 'role',
+                  'phone', 'profile_picture', 'is_active']
