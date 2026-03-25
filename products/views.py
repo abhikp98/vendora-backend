@@ -20,7 +20,7 @@ class ProductListView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
-        products = Product.objects.filter(is_active=True).select_related(
+        products = Product.objects.filter(is_active=True, vendor__is_active=True).select_related(
             'vendor', 'category').prefetch_related('images')
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)

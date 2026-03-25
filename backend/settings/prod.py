@@ -11,6 +11,10 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
+INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic'
+]
+
 DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
